@@ -11,9 +11,15 @@ from WordleDictionary import FIVE_LETTER_WORDS
 from WordleGraphics import WordleGWindow, N_COLS, N_ROWS
 
 def wordle():
+    rand_word = random.choice(FIVE_LETTER_WORDS)
+    print(rand_word)
+
+    
+
 
     def enter_action(s):
         gw.show_message("You have to implement this method.")
+        # gw.show_message(random_word)
 
     gw = WordleGWindow()
     gw.add_enter_listener(enter_action)
