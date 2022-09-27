@@ -61,13 +61,14 @@ MESSAGE_Y = TOP_MARGIN + BOARD_HEIGHT + MESSAGE_SEP
 class WordleGWindow:
     """This class creates the Wordle window."""
 
-    def __init__(self):
+    def __init__(self, rand_word):
         """Creates the Wordle window."""
+        random = rand_word
 
         def create_grid():
             return [
                 [
-                    WordleSquare(canvas, i, j) for j in range(N_COLS)
+                    WordleSquare(canvas, i, j, rand_word) for j in range(N_COLS)
                 ] for i in range(N_ROWS)
             ]
 
@@ -208,13 +209,15 @@ class WordleGWindow:
 
 class WordleSquare:
 
-    def __init__(self, canvas, row, col):
+    def __init__(self, canvas, row, col, rand_word):
         x0 = (CANVAS_WIDTH - BOARD_WIDTH) / 2 + col * SQUARE_DELTA
         y0 = TOP_MARGIN + row * SQUARE_DELTA
         x1 = x0 + SQUARE_SIZE
         y1 = y0 + SQUARE_SIZE
         self._canvas = canvas
-        self._ch = " "
+        random_word = rand_word
+        letters = [x for x in random_word]
+        self._ch = letters[col]
         self._color = UNKNOWN_COLOR;
         self._frame = canvas.create_rectangle(x0, y0, x1, y1)
         self._text = canvas.create_text(x0 + SQUARE_SIZE / 2,
