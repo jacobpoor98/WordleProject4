@@ -11,6 +11,7 @@ from WordleDictionary import FIVE_LETTER_WORDS
 from WordleGraphics import WordleGWindow, N_COLS, N_ROWS
 
 def wordle():
+    # selects a random word from the wordle dictionary
     rand_word = random.choice(FIVE_LETTER_WORDS)
     print(rand_word)
 
@@ -18,7 +19,16 @@ def wordle():
 
 
     def enter_action(s):
-        gw.show_message("You have to implement this method.")
+        # the string is received in all uppercase, converts to lowercase
+        # since dictionary is all lowercase
+        s = s.lower()
+        # check if the word is in the list
+        if s in FIVE_LETTER_WORDS:
+            # if in the list, display the following
+            gw.show_message("You're headed in the right direction!")
+        else:
+            # if not in the list, display the following
+            gw.show_message("Not in word list")
 
     gw = WordleGWindow(rand_word)
     gw.add_enter_listener(enter_action)

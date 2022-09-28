@@ -63,6 +63,7 @@ class WordleGWindow:
 
     def __init__(self, rand_word):
         """Creates the Wordle window."""
+        # grabs the imported random word
         random = rand_word
 
         def create_grid():
@@ -215,9 +216,14 @@ class WordleSquare:
         x1 = x0 + SQUARE_SIZE
         y1 = y0 + SQUARE_SIZE
         self._canvas = canvas
+        # grabs the random word
         random_word = rand_word
+        # breaks the random word into component letters
         letters = [x for x in random_word]
-        self._ch = letters[col]
+        # the following method will post the component letters of the random word in 
+        # each row for milestone 1
+        # self._ch = letters[col]
+        self._ch = " "
         self._color = UNKNOWN_COLOR;
         self._frame = canvas.create_rectangle(x0, y0, x1, y1)
         self._text = canvas.create_text(x0 + SQUARE_SIZE / 2,
