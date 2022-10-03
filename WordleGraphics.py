@@ -221,7 +221,7 @@ class WordleSquare:
         # breaks the random word into component letters
         letters = [x for x in random_word]
         # the following method will post the component letters of the random word in 
-        # each row for milestone 1
+        # each row for milestone 1:
         # self._ch = letters[col]
         self._ch = " "
         self._color = UNKNOWN_COLOR;
