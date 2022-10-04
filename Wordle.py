@@ -28,10 +28,13 @@ def wordle():
         elif s in FIVE_LETTER_WORDS:
             # if in the list, display the following
             gw.show_message("You're headed in the right direction!")
+            i = gw.get_current_row()
+            i = i+1
+            gw.set_current_row(i)
         else:
             # if not in the list, display the following
             gw.show_message("Not in word list")
-
+            
     gw = WordleGWindow(rand_word)
     gw.add_enter_listener(enter_action)
 

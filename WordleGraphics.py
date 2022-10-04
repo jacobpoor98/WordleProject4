@@ -65,6 +65,7 @@ class WordleGWindow:
         """Creates the Wordle window."""
         # grabs the imported random word
         random = rand_word
+        i = 1
 
         def create_grid():
             return [
@@ -81,7 +82,7 @@ class WordleGWindow:
             for row in range(len(KEY_LABELS)):
                 y = y0 + row * (KEY_HEIGHT + KEY_YSEP)
                 x = (CANVAS_WIDTH - nk * KEY_WIDTH - (nk - 1) * KEY_XSEP) / 2
-                if row == 1:
+                if row == i:
                     x += (KEY_WIDTH + KEY_XSEP) / 2
                 for col in range(len(KEY_LABELS[row])):
                     label = KEY_LABELS[row][col]
@@ -193,6 +194,7 @@ class WordleGWindow:
 
     def get_current_row(self):
         return self._row
+
 
     def set_current_row(self, row):
         self._row = row
