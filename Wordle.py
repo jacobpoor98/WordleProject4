@@ -8,7 +8,7 @@ BE SURE TO UPDATE THIS COMMENT WHEN YOU WRITE THE CODE.
 import random
 
 from WordleDictionary import FIVE_LETTER_WORDS
-from WordleGraphics import WordleGWindow, WordleSquare
+from WordleGraphics import N_ROWS, WordleGWindow, WordleSquare
 
 def wordle():
     # selects a random word from the wordle dictionary
@@ -28,6 +28,12 @@ def wordle():
         elif s in FIVE_LETTER_WORDS:
             # if in the list, display the following
             gw.show_message("You're headed in the right direction!")
+            i = gw.get_current_row()
+            i = i+1
+            if i == N_ROWS:
+                gw.show_message("Sorry, it was " + rand_word)
+            else:
+                gw.set_current_row(i)
         else:
             # if not in the list, display the following
             gw.show_message("Not in word list")
