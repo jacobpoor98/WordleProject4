@@ -23,6 +23,9 @@ def wordle():
         # since dictionary is all lowercase
         s = s.lower()
         # check if the word is in the list
+        wordleGuessArray = s.split()
+        wordleArray = rand_word.split()
+
         if s == rand_word:
             gw.show_message("Correct!")
         elif s in FIVE_LETTER_WORDS:
