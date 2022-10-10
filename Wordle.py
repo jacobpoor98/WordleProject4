@@ -20,12 +20,9 @@ def wordle():
         # since dictionary is all lowercase
         s = s.lower()
         
+        # break random word and guess into component letters
         wordleGuessArray = list(s)
         wordleArray = list(rand_word)
-
-        # break random word and guess into component letters
-        print(wordleGuessArray)
-        print(wordleArray)
 
         # check if the word is in the list
         if s in FIVE_LETTER_WORDS:
@@ -37,16 +34,25 @@ def wordle():
                     #print("Correct position" + wordleGuessArray[iCount])
                     i = gw.get_current_row()
                     gw.set_square_color(i, iCount, CORRECT_COLOR)
+                    gw.set_key_color(wordleGuessArray[iCount].upper(), CORRECT_COLOR)
+                    #print("Key " + wordleGuessArray[iCount] + " " + key_color)
                     wordleArray[iCount] = ""
                 # fuction to color keys yellow if guessed letter is in random word
                 elif wordleGuessArray[iCount] in wordleArray:
                     i = gw.get_current_row()
                     gw.set_square_color(i, iCount, PRESENT_COLOR)
+                    # print("Key " + wordleGuessArray[iCount] + " " + key_color)
+                    key_color = gw.get_key_color(wordleGuessArray[iCount].upper())
+                    if key_color != CORRECT_COLOR:
+                        gw.set_key_color(wordleGuessArray[iCount].upper(), PRESENT_COLOR)
                 # function to color keys grey if guessed letter not in random word
                 else:
                     #print("Not correct position" + wordleGuessArray[iCount])
                     i = gw.get_current_row()
                     gw.set_square_color(i, iCount, MISSING_COLOR)
+                    key_color = gw.get_key_color(wordleGuessArray[iCount].upper())
+                    if key_color != CORRECT_COLOR:
+                        gw.set_key_color(wordleGuessArray[iCount].upper(), MISSING_COLOR)
                 iCount += 1
 
         # if correct, display the following
